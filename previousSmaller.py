@@ -12,7 +12,7 @@ stack.append(arr[0])
 ans = []
 ans.append(-1)
 for i in range(1 ,len(arr)):
-    while len(stack)>0 and stack[-1]<=arr[i]:
+    while len(stack)>0 and stack[-1]>=arr[i]:
         stack.pop()
     if len(stack)==0:
         span =-1
