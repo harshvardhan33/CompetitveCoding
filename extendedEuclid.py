@@ -1,21 +1,35 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jun  9 12:18:34 2020
+Created on Sun Jul 12 13:39:42 2020
 
 @author: harshvardhan
 """
 
+class Triplet:
+    def __init__(self):
+        self.x = None
+        self.y = None 
+        self.gcd = None
+        
 
-def extEuclid(a,b):
+def extendedEuclid(a,b):
+    #Base Case
     if b==0:
-        return a,1,0
-    
-    gcd,x1,y1 = extEuclid(b,a%b)
-    x=y1
-    y=x1 - (a//b)*y1
-    return gcd,x,y
+        ans = Triplet()
+        ans.x = 1
+        ans.y = 0
+        ans.gcd = a
+        return ans
+    smallAns = extendedEuclid(b, a%b)
+    ans = Triplet()
+    ans.gcd = smallAns.gcd
+    ans.x = smallAns.y
+    ans.y = smallAns.x - (a//b)*smallAns.y
+    return ans
 
 
+a = 16 
+b = 10 
 
-a,b=5,17
-g,x,y = extEuclid(a,b)
+final = extendedEuclid(a, b)
+print(final.x,final.y,final.gcd)        
