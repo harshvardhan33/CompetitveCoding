@@ -5,7 +5,7 @@ Created on Mon Aug 31 14:08:34 2020
 @author: harshvardhan
 """
 
-arr = [6,2,5,4,5,1,6]
+arr = [1,2,2,1]
 n = len(arr)
 right = [n for i in range(n)]
 left = [-1 for i in range(n)]
@@ -14,8 +14,8 @@ for i in range(len(arr)):
     if len(stack)==0:
         stack.append([arr[i],i])
         continue
-    if len(stack)>0 and stack[-1][0]>arr[i]:
-        while len(stack)>0 and stack[-1][0]>arr[i]:
+    if len(stack)>0 and stack[-1][0]>=arr[i]:
+        while len(stack)>0 and stack[-1][0]>=arr[i]:
             stack.pop()
         if len(stack):
             left[i] = stack[-1][1]
@@ -30,8 +30,8 @@ for i in range(len(arr)-1,-1,-1):
     if len(stack)==0:
         stack.append([arr[i],i])
         continue
-    if len(stack)>0 and stack[-1][0]>arr[i]:
-        while len(stack)>0 and stack[-1][0]>arr[i]:
+    if len(stack)>0 and stack[-1][0]>=arr[i]:
+        while len(stack)>0 and stack[-1][0]>=arr[i]:
             stack.pop()
         if len(stack):
             right[i] = stack[-1][1]
